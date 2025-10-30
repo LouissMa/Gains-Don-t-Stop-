@@ -1,13 +1,29 @@
-cd D:\GithubProjects\Gains-Don't-Stop
-echo # Gains Don't Stop 💪 > README.md
-echo This repository tracks my daily algorithm practice, machine learning progress, and projects. >> README.md
-echo. >> README.md
-echo ## 🧩 Structure >> README.md
-echo - Algorithms/ → 每日算法题练习 >> README.md
-echo - Machine-Learning/ → 机器学习笔记与实验 >> README.md
-echo - Projects/ → 我的编程项目（智能公交、交通可视化等） >> README.md
-echo - Daily-Logs/ → 每日总结日志 >> README.md
-echo. >> README.md
-echo ## 🏆 Goal >> README.md
-echo To keep improving, one commit at a time. >> README.md
-  
+# 💪 Gains Don't Stop
+
+> A repository to record my **daily growth** in algorithms, AI, and software projects.
+
+---
+
+## 📂 Structure
+
+| Folder | Description |
+|--------|--------------|
+| 🧮 `Algorithms/` | Daily algorithm challenges and solutions |
+| 🧠 `Machine-Learning/` | Notes and experiments in ML & AI |
+| 🚀 `Projects/` | Personal projects (Smart Bus, Traffic Visualization, Game AI) |
+| 📘 `Daily-Logs/` | Daily reflections and progress summaries |
+
+---
+
+## 🏆 My Goals
+
+- Solve algorithm problems **every day**
+- Build **real-world AI applications**
+- Commit & improve **consistently**
+
+---
+
+## 🧭 Motto
+
+> “Discipline is the bridge between goals and accomplishment.”  
+> — Jim Rohn
