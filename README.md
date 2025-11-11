@@ -17,7 +17,7 @@
 
 ## 🏆 My Goals
 
-- Solve algorithm problems **every day**
+- Solve algorithm problems **every day** & Be Legendary Grandmaster
 - Build **real-world AI applications**
 - Commit & improve **consistently**
 
