@@ -10,7 +10,7 @@
 |--------|--------------|
 | 🧮 `Algorithms/` | Daily algorithm challenges and solutions |
 | 🧠 `Machine-Learning/` | Notes and experiments in ML & AI |
-| 🚀 `Projects/` | Personal projects (Smart Bus, Traffic Visualization, Game AI) |
+| 🚀 `Projects/` | Personal projects (Game AI) |
 | 📘 `Daily-Logs/` | Daily reflections and progress summaries |
 
 ---
