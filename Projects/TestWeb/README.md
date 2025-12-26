@@ -1,35 +1,72 @@
-# Pet Store Online
+# 🐾 Pet Store Online | 宠物用品线上商城
 
-A simple Java Web application for a pet store, built with Servlet, JSP, and MySQL.
+> 一个基于 Java Web (Servlet + JSP) 的轻量级宠物用品电商系统。
 
-## Features
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=java&logoColor=white)
+![Servlet](https://img.shields.io/badge/Servlet-JSP-blue?style=flat-square)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![Maven](https://img.shields.io/badge/Build-Maven-C71A36?style=flat-square&logo=apache-maven&logoColor=white)
 
-### User Features
-- **Account**: Register, Login, Logout.
-- **Products**: Browse hot products, view all products, view product details.
-- **Shopping**: Add to cart, update cart, place order.
-- **Orders**: View order history.
+---
 
-### Admin Features
-- **Dashboard**: View total products and orders count.
-- **Product Management**: Add, Edit, Delete products. Set hot recommendations.
-- **Order Management**: View all orders, update order status (e.g., Ship, Deliver).
+## 📖 项目简介
 
-## Setup
+**Pet Store Online** 是一个面向小型宠物店的 B2C 电商平台。项目采用经典的 Java Web 技术栈开发，实现了从用户浏览、选购到下单的全流程，以及管理员对商品和订单的后台管理功能。结构清晰，适合作为 Java Web 入门学习或课程设计参考。
 
-1.  **Database**:
-    -   Create a MySQL database named `petstore`.
-    -   Run the SQL script `src/main/resources/init.sql` to create tables and initial data.
-    -   Update `src/main/resources/db.properties` with your MySQL username and password.
+## ✨ 功能特性 (Features)
 
-2.  **Build**:
-    -   This is a Maven project. Use `mvn clean package` to build the WAR file.
+### 🐶 用户端 (User)
+* **账号管理**：支持用户注册、登录与安全注销。
+* **商品浏览**：
+    * 🔥 **热卖推荐**：首页展示精选热销商品。
+    * 📋 **全部商品**：浏览商城内所有在售宠物用品。
+    * 🔍 **详情展示**：查看商品详细信息与价格。
+* **购物车 (Shopping Cart)**：
+    * 一键加入购物车。
+    * 动态调整购买数量。
+    * 购物车总价自动计算。
+* **订单中心**：
+    * 下单结算流程。
+    * 查看历史订单记录与详情。
 
-3.  **Run**:
-    -   Deploy the WAR file to a Servlet container like Tomcat.
-    -   Or use a Maven plugin if configured (e.g., `mvn jetty:run` or configure Tomcat in IDE).
+### 🔧 管理端 (Admin)
+* **仪表盘 (Dashboard)**：直观展示商品总数与订单总量统计。
+* **商品管理**：
+    * 新增、编辑、下架宠物用品。
+    * 设置/取消“热卖推荐”状态。
+* **订单管理**：
+    * 查看所有用户订单列表。
+    * 更新订单状态（如：点击发货、标记已送达）。
 
-## Default Accounts
+---
 
--   **Admin**: username: `admin`, password: `admin123`
--   **User**: username: `testuser`, password: `123456`
+## 🛠️ 快速开始 (Setup)
+
+### 1. 环境准备
+确保你的开发环境已安装以下软件：
+* JDK 1.8+
+* MySQL 5.7 或 8.0
+* Maven 3.x
+* Tomcat 9.0 (或其他 Servlet 容器)
+
+### 2. 数据库配置
+1.  在 MySQL 中创建一个名为 `petstore` 的数据库：
+    ```sql
+    CREATE DATABASE petstore CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+    ```
+2.  运行项目中的 SQL 脚本 `src/main/resources/init.sql` 以创建表结构并导入初始数据。
+3.  打开配置文件 `src/main/resources/db.properties`，修改你的数据库账号密码：
+    ```properties
+    jdbc.url=jdbc:mysql://localhost:3306/petstore?useSSL=false&serverTimezone=UTC
+    jdbc.username=你的用户名
+    jdbc.password=你的密码
+    ```
+
+### 3. 构建与运行
+本项目使用 Maven 进行管理。
+
+**方式 A: 使用命令行**
+```bash
+# 进入项目根目录
+mvn clean package
+# 构建成功后，将 target/ 目录下的 .war 文件部署到 Tomcat 的 webapps 目录
