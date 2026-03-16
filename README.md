@@ -9,7 +9,7 @@
 | Folder | Description |
 |--------|--------------|
 | 🧮 `Algorithms/` | Daily algorithm challenges and solutions |
-| 🧠 `Machine-Learning/` | Notes and experiments in ML & AI |
+| 🧠 `Reinforcement Learning/` | Notes and experiments in ML & AI & DRL|
 | 🚀 `Projects/` | Personal projects (Game AI) |
 | 📘 `Daily-Logs/` | Daily reflections and progress summaries |
 
