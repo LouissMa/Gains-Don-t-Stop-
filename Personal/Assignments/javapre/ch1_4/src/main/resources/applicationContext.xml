@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 例1-4：构造方法实例化 -->
+    <bean id="constructorInstance"
+          class="instance.BeanClass"/>
+
+
+    <!-- 例1-5：静态工厂实例化 -->
+    <bean id="staticFactoryInstance"
+          class="instance.BeanStaticFactory"
+          factory-method="createBeanClassInstance"/>
+
+
+    <!-- 实例工厂 -->
+    <bean id="beanInstanceFactory"
+          class="instance.BeanInstanceFactory"/>
+
+    <!-- 例1-6：实例工厂实例化 -->
+    <bean id="instanceFactoryInstance"
+          factory-bean="beanInstanceFactory"
+          factory-method="createBeanClassInstance"/>
+
+    <bean id="scope1" class = "instance.BeanClass" scope="singleton"/>
+    <bean id="scope2" class = "instance.BeanClass" scope="prototype"/>
+    <!-- 配置bean，使用init-method属性指定初始化方法，使用destroy-method属性指定销毁方法 -->
+    <bean id="beanLife" class="service.MyService"
+          init-method="initService" destroy-method="destroyService"/>
+
+</beans>
