@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hr.hrsystem.mapper.EmployeeMapper">
+
+    <sql id="EmployeeColumns">
+        e.emp_id,
+        e.emp_name,
+        e.gender,
+        e.email,
+        e.phone,
+        e.hire_date,
+        e.salary,
+        e.dept_id
+    </sql>
+
+    <select id="selectAllWithDeptName" resultType="com.hr.hrsystem.entity.Employee">
+        select
+        <include refid="EmployeeColumns"/>,
+        d.dept_name as department_name
+        from employee e
+        left join department d on e.dept_id = d.dept_id
+        order by e.emp_id asc
+    </select>
+
+    <select id="selectById" parameterType="int" resultType="com.hr.hrsystem.entity.Employee">
+        select
+        <include refid="EmployeeColumns"/>,
+        d.dept_name as department_name
+        from employee e
+        left join department d on e.dept_id = d.dept_id
+        where e.emp_id = #{empId}
+    </select>
+
+    <insert id="insert" parameterType="com.hr.hrsystem.entity.Employee" useGeneratedKeys="true" keyProperty="empId">
+        insert into employee (emp_name, gender, email, phone, hire_date, salary, dept_id)
+        values (#{empName}, #{gender}, #{email}, #{phone}, #{hireDate}, #{salary}, #{deptId})
+    </insert>
+
+    <update id="updateSelective" parameterType="com.hr.hrsystem.entity.Employee">
+        update employee
+        <set>
+            <if test="empName != null">emp_name = #{empName},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="hireDate != null">hire_date = #{hireDate},</if>
+            <if test="salary != null">salary = #{salary},</if>
+            <if test="deptId != null">dept_id = #{deptId},</if>
+        </set>
+        where emp_id = #{empId}
+    </update>
+
+    <delete id="deleteById" parameterType="int">
+        delete from employee where emp_id = #{empId}
+    </delete>
+
+    <select id="countByCriteria" parameterType="com.hr.hrsystem.dto.EmployeeSearchCriteria" resultType="long">
+        select count(1)
+        from employee e
+        <where>
+            <if test="keyword != null and keyword != ''">
+                and e.emp_name like concat('%', #{keyword}, '%')
+            </if>
+            <if test="deptId != null">
+                and e.dept_id = #{deptId}
+            </if>
+            <if test="minSalary != null">
+                and e.salary &gt;= #{minSalary}
+            </if>
+            <if test="maxSalary != null">
+                and e.salary &lt;= #{maxSalary}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByCriteria" parameterType="com.hr.hrsystem.dto.EmployeeSearchCriteria" resultType="com.hr.hrsystem.entity.Employee">
+        select
+        <include refid="EmployeeColumns"/>,
+        d.dept_name as department_name
+        from employee e
+        left join department d on e.dept_id = d.dept_id
+        <where>
+            <if test="keyword != null and keyword != ''">
+                and e.emp_name like concat('%', #{keyword}, '%')
+            </if>
+            <if test="deptId != null">
+                and e.dept_id = #{deptId}
+            </if>
+            <if test="minSalary != null">
+                and e.salary &gt;= #{minSalary}
+            </if>
+            <if test="maxSalary != null">
+                and e.salary &lt;= #{maxSalary}
+            </if>
+        </where>
+        order by e.emp_id asc
+        limit #{limit} offset #{offset}
+    </select>
+
+    <resultMap id="EmployeeDetailMap" type="com.hr.hrsystem.entity.Employee">
+        <id property="empId" column="emp_id"/>
+        <result property="empName" column="emp_name"/>
+        <result property="gender" column="gender"/>
+        <result property="email" column="email"/>
+        <result property="phone" column="phone"/>
+        <result property="hireDate" column="hire_date"/>
+        <result property="salary" column="salary"/>
+        <result property="deptId" column="dept_id"/>
+
+        <association property="department"
+                     javaType="com.hr.hrsystem.entity.Department"
+                     column="dept_id"
+                     select="com.hr.hrsystem.mapper.DepartmentMapper.selectById"
+                     fetchType="eager"/>
+
+        <collection property="salaryHistories"
+                    ofType="com.hr.hrsystem.entity.SalaryHistory"
+                    column="emp_id"
+                    select="com.hr.hrsystem.mapper.SalaryHistoryMapper.selectByEmpIdOrderByDateDesc"
+                    fetchType="lazy"/>
+    </resultMap>
+
+    <select id="selectDetail" parameterType="int" resultMap="EmployeeDetailMap">
+        select <include refid="EmployeeColumns"/>
+        from employee e
+        where e.emp_id = #{empId}
+    </select>
+
+</mapper>
