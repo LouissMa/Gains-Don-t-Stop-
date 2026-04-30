@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lab.borrow.mapper.DeviceMapper">
+
+    <resultMap id="DeviceMap" type="Device">
+        <id column="device_id" property="deviceId"/>
+        <result column="device_name" property="deviceName"/>
+        <result column="device_model" property="deviceModel"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="location" property="location"/>
+        <result column="purchase_date" property="purchaseDate"/>
+        <result column="status" property="status"/>
+        <result column="max_borrow_days" property="maxBorrowDays"/>
+    </resultMap>
+
+    <sql id="DeviceColumns">
+        device_id, device_name, device_model, category_id, location, purchase_date, status, max_borrow_days
+    </sql>
+
+    <insert id="insert" parameterType="Device" useGeneratedKeys="true" keyProperty="deviceId">
+        INSERT INTO device
+        (device_name, device_model, category_id, location, purchase_date, status, max_borrow_days)
+        VALUES
+        (#{deviceName}, #{deviceModel}, #{categoryId}, #{location}, #{purchaseDate}, #{status}, #{maxBorrowDays})
+    </insert>
+
+    <select id="selectById" resultMap="DeviceMap">
+        SELECT <include refid="DeviceColumns"/> FROM device WHERE device_id = #{deviceId}
+    </select>
+
+    <select id="selectByName" resultMap="DeviceMap">
+        SELECT <include refid="DeviceColumns"/> FROM device WHERE device_name = #{deviceName}
+    </select>
+
+    <update id="updateById" parameterType="Device">
+        UPDATE device
+        SET device_name = #{deviceName},
+            device_model = #{deviceModel},
+            category_id = #{categoryId},
+            location = #{location},
+            purchase_date = #{purchaseDate},
+            status = #{status},
+            max_borrow_days = #{maxBorrowDays}
+        WHERE device_id = #{deviceId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM device WHERE device_id = #{deviceId}
+    </delete>
+
+    <select id="page" resultMap="DeviceMap">
+        SELECT <include refid="DeviceColumns"/>
+        FROM device
+        <where>
+            <if test="categoryId != null">
+                category_id = #{categoryId}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                <if test="categoryId != null">AND</if>
+                (device_name LIKE CONCAT('%', #{keyword}, '%')
+                OR device_model LIKE CONCAT('%', #{keyword}, '%')
+                OR location LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+        </where>
+        ORDER BY device_id DESC
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT COUNT(1)
+        FROM device
+        <where>
+            <if test="categoryId != null">
+                category_id = #{categoryId}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                <if test="categoryId != null">AND</if>
+                (device_name LIKE CONCAT('%', #{keyword}, '%')
+                OR device_model LIKE CONCAT('%', #{keyword}, '%')
+                OR location LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+        </where>
+    </select>
+
+    <select id="countByCategoryId" resultType="long">
+        SELECT COUNT(1) FROM device WHERE category_id = #{categoryId}
+    </select>
+
+</mapper>

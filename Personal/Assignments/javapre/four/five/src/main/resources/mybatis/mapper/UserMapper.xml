@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lab.borrow.mapper.UserMapper">
+
+    <resultMap id="UserMap" type="User">
+        <id column="user_id" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="real_name" property="realName"/>
+        <result column="student_no" property="studentNo"/>
+        <result column="role" property="role"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="status" property="status"/>
+        <result column="last_login_time" property="lastLoginTime"/>
+    </resultMap>
+
+    <sql id="UserColumns">
+        user_id, username, password, real_name, student_no, role, phone, email, status, last_login_time
+    </sql>
+
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO `user`
+        (username, password, real_name, student_no, role, phone, email, status, last_login_time)
+        VALUES
+        (#{username}, #{password}, #{realName}, #{studentNo}, #{role}, #{phone}, #{email}, #{status}, #{lastLoginTime})
+    </insert>
+
+    <select id="selectById" resultMap="UserMap">
+        SELECT <include refid="UserColumns"/> FROM `user` WHERE user_id = #{userId}
+    </select>
+
+    <select id="selectByUsername" resultMap="UserMap">
+        SELECT <include refid="UserColumns"/> FROM `user` WHERE username = #{username}
+    </select>
+
+    <select id="selectByStudentNo" resultMap="UserMap">
+        SELECT <include refid="UserColumns"/> FROM `user` WHERE student_no = #{studentNo}
+    </select>
+
+    <update id="updateById" parameterType="User">
+        UPDATE `user`
+        SET real_name = #{realName},
+            student_no = #{studentNo},
+            phone = #{phone},
+            email = #{email},
+            role = #{role},
+            status = #{status}
+        WHERE user_id = #{userId}
+    </update>
+
+    <update id="updateStatus">
+        UPDATE `user` SET status = #{status} WHERE user_id = #{userId}
+    </update>
+
+    <update id="updatePassword">
+        UPDATE `user` SET password = #{password} WHERE user_id = #{userId}
+    </update>
+
+    <update id="updateLastLoginTime">
+        UPDATE `user` SET last_login_time = #{lastLoginTime} WHERE user_id = #{userId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM `user` WHERE user_id = #{userId}
+    </delete>
+
+    <select id="page" resultMap="UserMap">
+        SELECT <include refid="UserColumns"/>
+        FROM `user`
+        <where>
+            <if test="keyword != null and keyword != ''">
+                (username LIKE CONCAT('%', #{keyword}, '%')
+                OR real_name LIKE CONCAT('%', #{keyword}, '%')
+                OR student_no LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+        </where>
+        ORDER BY user_id DESC
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT COUNT(1)
+        FROM `user`
+        <where>
+            <if test="keyword != null and keyword != ''">
+                (username LIKE CONCAT('%', #{keyword}, '%')
+                OR real_name LIKE CONCAT('%', #{keyword}, '%')
+                OR student_no LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+        </where>
+    </select>
+
+</mapper>
