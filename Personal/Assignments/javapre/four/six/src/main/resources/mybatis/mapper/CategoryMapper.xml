@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lab.borrow.mapper.CategoryMapper">
+
+    <resultMap id="CategoryMap" type="Category">
+        <id column="category_id" property="categoryId"/>
+        <result column="category_name" property="categoryName"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <sql id="CategoryColumns">
+        category_id, category_name, parent_id, description
+    </sql>
+
+    <insert id="insert" parameterType="Category" useGeneratedKeys="true" keyProperty="categoryId">
+        INSERT INTO category (category_name, parent_id, description)
+        VALUES (#{categoryName}, #{parentId}, #{description})
+    </insert>
+
+    <select id="selectById" resultMap="CategoryMap">
+        SELECT <include refid="CategoryColumns"/> FROM category WHERE category_id = #{categoryId}
+    </select>
+
+    <select id="selectByNameAndParent" resultMap="CategoryMap">
+        SELECT <include refid="CategoryColumns"/>
+        FROM category
+        WHERE category_name = #{categoryName}
+        <if test="parentId == null">
+            AND parent_id IS NULL
+        </if>
+        <if test="parentId != null">
+            AND parent_id = #{parentId}
+        </if>
+        LIMIT 1
+    </select>
+
+    <select id="listAll" resultMap="CategoryMap">
+        SELECT <include refid="CategoryColumns"/> FROM category ORDER BY parent_id IS NOT NULL, parent_id, category_id
+    </select>
+
+    <select id="listByParentId" resultMap="CategoryMap">
+        SELECT <include refid="CategoryColumns"/>
+        FROM category
+        <if test="parentId == null">
+            WHERE parent_id IS NULL
+        </if>
+        <if test="parentId != null">
+            WHERE parent_id = #{parentId}
+        </if>
+        ORDER BY category_id
+    </select>
+
+    <update id="updateById" parameterType="Category">
+        UPDATE category
+        SET category_name = #{categoryName},
+            parent_id = #{parentId},
+            description = #{description}
+        WHERE category_id = #{categoryId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM category WHERE category_id = #{categoryId}
+    </delete>
+
+    <select id="countChildren" resultType="long">
+        SELECT COUNT(1) FROM category WHERE parent_id = #{categoryId}
+    </select>
+
+</mapper>

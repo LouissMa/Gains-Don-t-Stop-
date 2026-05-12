@@ -1,0 +1,51 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="${ctx}/">实验室设备借用管理系统 v3.0</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="${ctx}/devices">设备列表</a></li>
+                <li class="nav-item"><a class="nav-link" href="${ctx}/my/borrows">我的申请</a></li>
+                <li class="nav-item"><a class="nav-link" href="${ctx}/violations">我的违规</a></li>
+                <li class="nav-item"><a class="nav-link" href="${ctx}/profile">个人中心</a></li>
+                <c:if test="${sessionScope.SESSION_USER != null && sessionScope.SESSION_USER.role == 'admin'}">
+                    <li class="nav-item"><a class="nav-link" href="${ctx}/">管理工作台</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${ctx}/admin/borrows">借用审批</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${ctx}/admin/violations">违规管理</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${ctx}/admin/overdue">超时设备</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${ctx}/admin/violations/stats">违规统计</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${ctx}/admin/usage">设备使用率</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${ctx}/admin/users">用户管理</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${ctx}/admin/categories">分类管理</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${ctx}/admin/devices/new">新增设备</a></li>
+                </c:if>
+            </ul>
+            <ul class="navbar-nav">
+                <c:if test="${sessionScope.SESSION_USER != null}">
+                    <li class="nav-item"><span class="navbar-text me-3">${sessionScope.SESSION_USER.realName}</span></li>
+                    <li class="nav-item"><a class="nav-link" href="${ctx}/auth/logout">退出</a></li>
+                </c:if>
+                <c:if test="${sessionScope.SESSION_USER == null}">
+                    <li class="nav-item"><a class="nav-link" href="${ctx}/auth/login">登录</a></li>
+                </c:if>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<c:if test="${sessionScope.SESSION_USER != null && untreatedViolationCount > 0}">
+    <div class="alert alert-warning mb-0 rounded-0 text-center">
+        您有 ${untreatedViolationCount} 条待处理的违规记录。
+        <c:choose>
+            <c:when test="${sessionScope.SESSION_USER.role == 'admin'}">
+                <a href="${ctx}/admin/violations" class="alert-link">去处理</a>
+            </c:when>
+            <c:otherwise>
+                <a href="${ctx}/violations" class="alert-link">查看详情</a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+</c:if>

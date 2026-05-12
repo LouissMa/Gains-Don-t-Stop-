@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lab.borrow.mapper.BorrowApplyMapper">
+
+    <resultMap id="BorrowApplyMap" type="BorrowApply">
+        <id column="apply_id" property="applyId"/>
+        <result column="user_id" property="userId"/>
+        <result column="device_id" property="deviceId"/>
+        <result column="apply_date" property="applyDate"/>
+        <result column="start_date" property="startDate"/>
+        <result column="end_date" property="endDate"/>
+        <result column="borrow_days" property="borrowDays"/>
+        <result column="purpose_type" property="purposeType"/>
+        <result column="purpose_note" property="purposeNote"/>
+        <result column="status" property="status"/>
+        <result column="audit_user_id" property="auditUserId"/>
+        <result column="audit_time" property="auditTime"/>
+        <result column="audit_note" property="auditNote"/>
+        <result column="actual_borrow_time" property="actualBorrowTime"/>
+        <result column="actual_return_time" property="actualReturnTime"/>
+        <result column="return_note" property="returnNote"/>
+        <result column="username" property="username"/>
+        <result column="real_name" property="realName"/>
+        <result column="device_name" property="deviceName"/>
+        <result column="device_model" property="deviceModel"/>
+    </resultMap>
+
+    <sql id="ApplyColumns">
+        ba.apply_id, ba.user_id, ba.device_id, ba.apply_date, ba.start_date, ba.end_date,
+        ba.borrow_days, ba.purpose_type, ba.purpose_note, ba.status, ba.audit_user_id,
+        ba.audit_time, ba.audit_note, ba.actual_borrow_time, ba.actual_return_time, ba.return_note,
+        u.username, u.real_name, d.device_name, d.device_model
+    </sql>
+
+    <insert id="insert" parameterType="BorrowApply" useGeneratedKeys="true" keyProperty="applyId">
+        INSERT INTO borrow_apply
+        (user_id, device_id, apply_date, start_date, end_date, borrow_days, purpose_type, purpose_note, status)
+        VALUES
+        (#{userId}, #{deviceId}, NOW(), #{startDate}, #{endDate}, #{borrowDays}, #{purposeType}, #{purposeNote}, #{status})
+    </insert>
+
+    <select id="selectById" resultMap="BorrowApplyMap">
+        SELECT <include refid="ApplyColumns"/>
+        FROM borrow_apply ba
+        JOIN `user` u ON ba.user_id = u.user_id
+        JOIN device d ON ba.device_id = d.device_id
+        WHERE ba.apply_id = #{applyId}
+    </select>
+
+    <update id="updateStatus" parameterType="BorrowApply">
+        UPDATE borrow_apply
+        <set>
+            status = #{status},
+            <if test="auditUserId != null">audit_user_id = #{auditUserId},</if>
+            <if test="auditTime != null">audit_time = #{auditTime},</if>
+            <if test="auditNote != null">audit_note = #{auditNote},</if>
+            <if test="actualBorrowTime != null">actual_borrow_time = #{actualBorrowTime},</if>
+            <if test="actualReturnTime != null">actual_return_time = #{actualReturnTime},</if>
+            <if test="returnNote != null">return_note = #{returnNote},</if>
+        </set>
+        WHERE apply_id = #{applyId}
+    </update>
+
+    <select id="page" resultMap="BorrowApplyMap">
+        SELECT <include refid="ApplyColumns"/>
+        FROM borrow_apply ba
+        JOIN `user` u ON ba.user_id = u.user_id
+        JOIN device d ON ba.device_id = d.device_id
+        <where>
+            <if test="userId != null">ba.user_id = #{userId}</if>
+            <if test="status != null and status != ''">
+                <if test="userId != null">AND</if>
+                ba.status = #{status}
+            </if>
+        </where>
+        ORDER BY ba.apply_id DESC
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT COUNT(1)
+        FROM borrow_apply ba
+        <where>
+            <if test="userId != null">ba.user_id = #{userId}</if>
+            <if test="status != null and status != ''">
+                <if test="userId != null">AND</if>
+                ba.status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="countByStatus" resultType="long">
+        SELECT COUNT(1) FROM borrow_apply WHERE status = #{status}
+    </select>
+
+    <select id="countToday" resultType="long">
+        SELECT COUNT(1) FROM borrow_apply WHERE DATE(apply_date) = CURDATE()
+    </select>
+
+    <select id="countActiveByUserId" resultType="long">
+        SELECT COUNT(1)
+        FROM borrow_apply
+        WHERE user_id = #{userId}
+          AND status IN ('approved', 'borrowed')
+    </select>
+
+    <select id="countAnyByUserId" resultType="long">
+        SELECT COUNT(1) FROM borrow_apply WHERE user_id = #{userId}
+    </select>
+
+    <select id="countActiveByDeviceId" resultType="long">
+        SELECT COUNT(1)
+        FROM borrow_apply
+        WHERE device_id = #{deviceId}
+          AND status IN ('approved', 'borrowed')
+    </select>
+
+    <select id="countConflict" resultType="long">
+        SELECT COUNT(1)
+        FROM borrow_apply
+        WHERE device_id = #{deviceId}
+          AND start_date &lt; #{endDate}
+          AND #{startDate} &lt; end_date
+          <if test="excludeApplyId != null">
+              AND apply_id != #{excludeApplyId}
+          </if>
+          AND status IN
+          <foreach collection="statuses" item="s" open="(" separator="," close=")">
+              #{s}
+          </foreach>
+    </select>
+
+    <select id="listOverdueBorrowed" resultMap="BorrowApplyMap">
+        SELECT <include refid="ApplyColumns"/>
+        FROM borrow_apply ba
+        JOIN `user` u ON ba.user_id = u.user_id
+        JOIN device d ON ba.device_id = d.device_id
+        WHERE ba.status = 'borrowed'
+          AND ba.end_date &lt; #{today}
+        ORDER BY ba.apply_id ASC
+    </select>
+</mapper>

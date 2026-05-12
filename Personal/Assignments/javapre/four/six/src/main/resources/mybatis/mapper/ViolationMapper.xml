@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lab.borrow.mapper.ViolationMapper">
+
+    <resultMap id="ViolationMap" type="Violation">
+        <id column="violation_id" property="violationId"/>
+        <result column="user_id" property="userId"/>
+        <result column="device_id" property="deviceId"/>
+        <result column="borrow_record_id" property="borrowRecordId"/>
+        <result column="violation_start_date" property="violationStartDate"/>
+        <result column="violation_days" property="violationDays"/>
+        <result column="status" property="status"/>
+        <result column="process_date" property="processDate"/>
+        <result column="process_user_id" property="processUserId"/>
+        <result column="process_note" property="processNote"/>
+        <result column="username" property="username"/>
+        <result column="real_name" property="realName"/>
+        <result column="device_name" property="deviceName"/>
+        <result column="device_model" property="deviceModel"/>
+        <result column="end_date" property="endDate"/>
+    </resultMap>
+
+    <resultMap id="ViolationStatMap" type="ViolationStat">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="cnt" property="count"/>
+    </resultMap>
+
+    <sql id="ViolationColumns">
+        v.violation_id, v.user_id, v.device_id, v.borrow_record_id, v.violation_start_date, v.violation_days,
+        v.status, v.process_date, v.process_user_id, v.process_note,
+        u.username, u.real_name, d.device_name, d.device_model, ba.end_date
+    </sql>
+
+    <insert id="insert" parameterType="Violation" useGeneratedKeys="true" keyProperty="violationId">
+        INSERT INTO violation
+        (user_id, device_id, borrow_record_id, violation_start_date, violation_days, status)
+        VALUES
+        (#{userId}, #{deviceId}, #{borrowRecordId}, #{violationStartDate}, #{violationDays}, #{status})
+    </insert>
+
+    <select id="selectById" resultMap="ViolationMap">
+        SELECT <include refid="ViolationColumns"/>
+        FROM violation v
+        JOIN `user` u ON v.user_id = u.user_id
+        JOIN device d ON v.device_id = d.device_id
+        JOIN borrow_apply ba ON v.borrow_record_id = ba.apply_id
+        WHERE v.violation_id = #{violationId}
+    </select>
+
+    <select id="selectByBorrowRecordId" resultMap="ViolationMap">
+        SELECT <include refid="ViolationColumns"/>
+        FROM violation v
+        JOIN `user` u ON v.user_id = u.user_id
+        JOIN device d ON v.device_id = d.device_id
+        JOIN borrow_apply ba ON v.borrow_record_id = ba.apply_id
+        WHERE v.borrow_record_id = #{borrowRecordId}
+        LIMIT 1
+    </select>
+
+    <update id="updateProcessed">
+        UPDATE violation
+        SET status = 'processed',
+            process_date = #{processDate},
+            process_user_id = #{processUserId},
+            process_note = #{processNote}
+        WHERE violation_id = #{violationId}
+          AND status = 'untreated'
+    </update>
+
+    <select id="page" resultMap="ViolationMap">
+        SELECT <include refid="ViolationColumns"/>
+        FROM violation v
+        JOIN `user` u ON v.user_id = u.user_id
+        JOIN device d ON v.device_id = d.device_id
+        JOIN borrow_apply ba ON v.borrow_record_id = ba.apply_id
+        <where>
+            <if test="userId != null">v.user_id = #{userId}</if>
+            <if test="deviceId != null">
+                <if test="userId != null">AND</if>
+                v.device_id = #{deviceId}
+            </if>
+            <if test="status != null and status != ''">
+                <if test="userId != null or deviceId != null">AND</if>
+                v.status = #{status}
+            </if>
+        </where>
+        ORDER BY v.violation_id DESC
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT COUNT(1)
+        FROM violation v
+        <where>
+            <if test="userId != null">v.user_id = #{userId}</if>
+            <if test="deviceId != null">
+                <if test="userId != null">AND</if>
+                v.device_id = #{deviceId}
+            </if>
+            <if test="status != null and status != ''">
+                <if test="userId != null or deviceId != null">AND</if>
+                v.status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="countUntreatedByUserId" resultType="long">
+        SELECT COUNT(1) FROM violation WHERE user_id = #{userId} AND status = 'untreated'
+    </select>
+
+    <select id="statsByUser" resultMap="ViolationStatMap">
+        SELECT u.user_id AS id, CONCAT(u.real_name, '(', u.username, ')') AS name, COUNT(1) AS cnt
+        FROM violation v
+        JOIN `user` u ON v.user_id = u.user_id
+        GROUP BY u.user_id, u.real_name, u.username
+        ORDER BY cnt DESC, u.user_id ASC
+    </select>
+
+    <select id="statsByDevice" resultMap="ViolationStatMap">
+        SELECT d.device_id AS id, d.device_name AS name, COUNT(1) AS cnt
+        FROM violation v
+        JOIN device d ON v.device_id = d.device_id
+        GROUP BY d.device_id, d.device_name
+        ORDER BY cnt DESC, d.device_id ASC
+    </select>
+
+    <select id="sumDeviceBorrowDaysInRange" resultType="long">
+        SELECT COALESCE(SUM(
+                DATEDIFF(LEAST(end_date, #{endDate}), GREATEST(start_date, #{startDate}))
+        ), 0)
+        FROM borrow_apply
+        WHERE device_id = #{deviceId}
+          AND start_date &lt; #{endDate}
+          AND #{startDate} &lt; end_date
+          AND status IN ('approved', 'borrowed', 'returned')
+    </select>
+</mapper>
