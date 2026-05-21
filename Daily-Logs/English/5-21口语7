@@ -1,0 +1,91 @@
+# Part 2 — Describe a challenging technological problem you faced
+
+One challenging technological problem I faced happened last semester when I was working on a small AI-related programming project with my classmates. We were trying to build a simple web-based chatbot, and my responsibility was to connect the backend AI model with the front-end interface. At first, I thought it would be fairly straightforward, but it turned out to be much more complicated than I expected.
+
+The main problem was that the server kept crashing whenever multiple users accessed the chatbot at the same time. Sometimes the responses were delayed for several seconds, and occasionally the whole webpage would freeze completely. This happened in our university dormitory while we were preparing for a project presentation, so the pressure was extremely high because we only had a few days left before the deadline.
+
+What made it especially challenging was that we couldn’t immediately identify the source of the problem. At first, we thought it was caused by the AI model itself, but later we realized the issue was related to memory management and inefficient API requests. Since I’m still a student and not an experienced software engineer, debugging the system took a lot of patience and research. I spent hours reading technical forums, watching YouTube tutorials, and testing different solutions line by line.
+
+Eventually, I solved the problem by optimizing the request process and reducing unnecessary data transmission between the front end and the backend. I also added a caching mechanism and improved the server configuration. After several rounds of testing, the chatbot finally became stable enough for our presentation.
+
+Although the experience was stressful, I actually learned a lot from it. It taught me that technological problems often require logical thinking, teamwork, and persistence rather than just technical knowledge alone. In a way, it also made me more confident in dealing with complex programming challenges in the future.
+
+---
+
+### 中文翻译：
+
+我遇到过一个很有挑战性的科技问题，那是在上学期我和同学一起做一个人工智能相关的小项目时发生的。我们当时在开发一个基于网页的聊天机器人，而我的任务是把后端 AI 模型和前端界面连接起来。一开始我觉得这个工作应该比较简单，但后来发现比我想象中复杂得多。
+
+主要的问题是，当多个用户同时访问聊天机器人时，服务器会不断崩溃。有时候回复会延迟好几秒，甚至整个网页会直接卡死。这件事发生在我们准备项目展示的时候，当时我们在大学宿舍里调试程序，而距离截止日期只剩下几天，所以压力特别大。
+
+最困难的一点是，我们一开始根本找不到问题来源。最初我们以为是 AI 模型本身导致的，但后来才发现问题实际上与内存管理以及低效的 API 请求有关。因为我毕竟还是学生，并不是经验丰富的软件工程师，所以整个调试过程花费了很多耐心和研究时间。我花了好几个小时查技术论坛、看 YouTube 教程，并且一行一行地测试不同解决方案。
+
+最后，我通过优化请求流程、减少前后端之间不必要的数据传输解决了问题。我还加入了缓存机制，并优化了服务器配置。经过多轮测试之后，聊天机器人终于稳定下来，顺利完成了展示。
+
+虽然整个过程很有压力，但我确实学到了很多东西。它让我明白，解决科技问题不仅需要技术知识，更需要逻辑思维、团队合作以及坚持不懈的精神。从某种意义上来说，这次经历也让我对未来面对复杂编程挑战更有信心了。
+
+---
+
+# Part 3
+
+## 1. What are the advantages and disadvantages of AI?
+
+AI has many advantages. First of all, it can greatly improve efficiency by automating repetitive tasks. For example, AI tools can help students summarize information, assist doctors in analyzing medical data, and even support programmers in writing code. It also makes knowledge more accessible because people can get information instantly.
+
+However, AI also has disadvantages. One major concern is that some people may become overly dependent on it and stop thinking critically. Another issue is job displacement, since certain repetitive jobs could be replaced by automation. In addition, AI systems sometimes generate incorrect information, so users still need to verify facts carefully.
+
+### 中文翻译：
+
+人工智能有很多优点。首先，它能够通过自动化重复性工作来大幅提高效率。比如 AI 工具可以帮助学生总结信息、帮助医生分析医疗数据，甚至帮助程序员写代码。同时，它也让知识获取变得更加容易，因为人们可以快速获得信息。
+
+不过，AI 也存在缺点。一个主要问题是，有些人可能会过度依赖它，从而失去独立思考能力。另外，部分重复性工作可能会被自动化取代，从而带来就业问题。此外，AI 有时也会生成错误信息，因此用户仍然需要认真核实事实。
+
+---
+
+## 2. Do you think people today should learn about AI technology?
+
+Yes, absolutely. I think AI is becoming such an important part of modern society that basic AI literacy will soon be as essential as computer literacy. Even if someone is not working in the tech industry, understanding AI can help them use technology more effectively and avoid being misled by misinformation. For students especially, learning about AI could create more career opportunities in the future because many industries are already integrating AI into their systems.
+
+### 中文翻译：
+
+是的，当然。我认为人工智能正在成为现代社会中越来越重要的一部分，所以未来基本的 AI 素养可能会像计算机素养一样重要。即使一个人不从事科技行业，了解 AI 也能帮助他们更有效地使用技术，并避免被错误信息误导。尤其对于学生来说，学习 AI 还能在未来创造更多职业机会，因为很多行业已经开始把 AI 融入系统中。
+
+---
+
+## 3. Should children learn to use AI?
+
+Yes, but I think it should be done in a balanced and guided way. Children should learn how to use AI as a tool for learning and creativity rather than simply relying on it to complete tasks automatically. For example, AI can help children practice languages, explore science topics, or improve problem-solving skills. However, parents and teachers also need to teach children critical thinking so they don’t blindly trust everything AI says.
+
+### 中文翻译：
+
+我觉得应该，但需要以平衡且有引导的方式进行。孩子们应该把 AI 当作学习和创造的工具，而不是单纯依赖它自动完成任务。比如 AI 可以帮助孩子练习语言、探索科学知识，或者提高解决问题的能力。不过，家长和老师也需要培养孩子的批判性思维，避免他们盲目相信 AI 给出的所有内容。
+
+---
+
+## 4. How can AI help in our lives?
+
+AI can help people in many aspects of daily life. In education, it can personalize learning and provide instant feedback to students. In healthcare, AI can assist doctors in diagnosing diseases more accurately. In daily routines, AI-powered apps can help people manage schedules, translate languages, or navigate traffic more efficiently. Personally, I use AI quite often when learning programming because it can explain concepts and help me debug code much faster.
+
+### 中文翻译：
+
+AI 可以在生活的很多方面帮助人们。在教育领域，它能够提供个性化学习以及即时反馈。在医疗领域，它可以辅助医生更准确地诊断疾病。在日常生活中，AI 应用还能帮助人们管理日程、翻译语言以及更高效地导航交通。对我个人来说，我在学习编程时经常会用到 AI，因为它能解释概念，并帮助我更快地调试代码。
+
+---
+
+## 5. Do you think students are overly reliant on AI?
+
+To some extent, yes. I think some students use AI too frequently, especially when writing essays or completing homework. Instead of using AI as a supportive tool, they sometimes rely on it to think for them. This could weaken their creativity and independent problem-solving ability over time. However, I don’t think AI itself is the problem. The key issue is whether students use it responsibly and still make an effort to learn actively.
+
+### 中文翻译：
+
+在某种程度上，我觉得是的。我认为有些学生确实过于依赖 AI，尤其是在写作文或者完成作业的时候。他们有时不是把 AI 当辅助工具，而是让 AI 代替自己思考。长期来看，这可能会削弱他们的创造力以及独立解决问题的能力。不过，我并不认为 AI 本身是问题，关键在于学生是否能够负责任地使用它，并继续主动学习。
+
+---
+
+## 6. What can teachers do to stop students relying too much on AI?
+
+I think teachers should focus more on developing students’ critical thinking and practical skills instead of simply banning AI completely. For example, teachers could design assignments that require personal opinions, real-life experiences, or in-class discussions, because those are harder for AI to replace. Schools could also teach students how to use AI ethically and effectively. In my opinion, the goal shouldn’t be to reject AI, but to help students use it wisely without losing their own ability to think independently.
+
+### 中文翻译：
+
+我觉得老师应该更多地培养学生的批判性思维和实践能力，而不是完全禁止 AI。比如，老师可以设计一些需要个人观点、真实经历或者课堂讨论的作业，因为这些内容更难被 AI 完全替代。学校也应该教学生如何以合乎伦理且有效的方式使用 AI。在我看来，目标不应该是排斥 AI，而是帮助学生在使用 AI 的同时，依然保持独立思考能力。
