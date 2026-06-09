@@ -1,0 +1,41 @@
+[project]
+name = "neural-movie-recommendation"
+dataset = "MovieLens 100K"
+task = "implicit-feedback-top-n"
+
+[paths]
+raw_data_dir = "data/raw/ml-100k"
+processed_data_dir = "data/processed"
+development_output_dir = "outputs/development"
+formal_output_dir = "outputs/formal"
+
+[data]
+positive_threshold = 4
+minimum_user_positives = 3
+split_strategy = "leave-one-out-by-time"
+training_negatives = 4
+evaluation_negatives = 99
+
+[models]
+names = ["gmf", "mlp", "neumf"]
+embedding_dim = 32
+mlp_layers = [64, 32, 16, 8]
+
+[training]
+epochs = 20
+batch_size = 4096
+learning_rate = 0.001
+optimizer = "adam"
+loss = "binary-cross-entropy"
+seed = 2026
+early_stopping_patience = 3
+num_workers = 0
+
+[evaluation]
+primary_metric = "ndcg@10"
+metrics = ["hr@5", "ndcg@5", "hr@10", "ndcg@10", "sampled_auc"]
+protocol = "one-positive-with-fixed-99-negatives"
+
+[governance]
+formal_training_approved = true
+allow_overwrite_formal_outputs = false

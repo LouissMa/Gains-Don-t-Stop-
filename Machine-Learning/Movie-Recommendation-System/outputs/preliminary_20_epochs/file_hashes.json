@@ -1,0 +1,17 @@
+{
+  "source_files": {
+    "src\\movie_recommender\\__init__.py": "cc8920964c23140694c9f865bad09725f28e95be906dd24bc7804b0c192fb7e5",
+    "src\\movie_recommender\\config.py": "e27fa8fdb46fb64500374751af9aa60a809c147e622270e33f2e82e8bd30cc79",
+    "src\\movie_recommender\\data.py": "fb4cfc592c293bb288f36f5dd2fa0f92807ae7f9d666e1e923f2385f0171861e",
+    "src\\movie_recommender\\evaluator.py": "633feeead9b963f2290fb240223b2fd061155969307c8693e652698655abcf94",
+    "src\\movie_recommender\\experiment.py": "9c7d6f3cd4bee900580c36048145ac6ec1b9de9d8783c67698f0a5226211a3ca",
+    "src\\movie_recommender\\metrics.py": "31ba7fd25d5d319af5c2b3136205179b11b1fdf09b5c9ed481db5e8ebbb67b43",
+    "src\\movie_recommender\\models.py": "075041f7f9a386dc267dd8a7127619a90c574d43e656bff7d05fa7a9682e6ac3",
+    "src\\movie_recommender\\reproducibility.py": "167ef142389c12c69ea26cf423c66b78f84579f28873338b7ac3dc5f93097531",
+    "src\\movie_recommender\\trainer.py": "432c7477ce267c891e5c5589e11e63c3aeb0c820926d57d713e043665daeea05",
+    "src\\movie_recommender\\visualization.py": "2bcbe9ce57811ac119a031441acfd83010fee9988a18f7ec602de8711f26b878"
+  },
+  "u.data": "06416e597f82b7342361e41163890c81036900f418ad91315590814211dca490",
+  "u.item": "553841ebc7de3a0fd0d6b62a204ea30c1e651aacfb2814c7a6584ac52f2c5701",
+  "u.user": "f120e114da2e8cf314fd28f99417c94ae9ddf1cb6db8ce0e4b5995d40e90e62c"
+}

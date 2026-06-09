@@ -1,0 +1,9 @@
+{
+  "num_items": 1682,
+  "num_users": 942,
+  "positive_threshold": 4.0,
+  "test_positives": 942,
+  "total_positives": 55375,
+  "train_positives": 53491,
+  "validation_positives": 942
+}

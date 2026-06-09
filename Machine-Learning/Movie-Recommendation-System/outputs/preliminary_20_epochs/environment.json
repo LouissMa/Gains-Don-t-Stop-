@@ -1,0 +1,12 @@
+{
+  "cuda_available": true,
+  "cuda_version": "12.4",
+  "cudnn_version": 90100,
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "numpy": "2.2.5",
+  "pid": 30304,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "python": "3.13.2 (tags/v3.13.2:4f8bb39, Feb  4 2025, 15:23:48) [MSC v.1942 64 bit (AMD64)]",
+  "pytorch": "2.6.0+cu124"
+}

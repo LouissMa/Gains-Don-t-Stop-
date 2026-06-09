@@ -1,0 +1,91 @@
+model,rank,user_idx,user_id,item_idx,item_id,title,genres,score
+gmf,1,0,1,317,318,Schindler's List (1993),Drama|War,0.8338505029678345
+gmf,2,0,1,356,357,One Flew Over the Cuckoo's Nest (1975),Drama,0.7913267612457275
+gmf,3,0,1,422,423,E.T. the Extra-Terrestrial (1982),Children's|Drama|Fantasy|Sci-Fi,0.7909047603607178
+gmf,4,0,1,285,286,"English Patient, The (1996)",Drama|Romance|War,0.7633308172225952
+gmf,5,0,1,482,483,Casablanca (1942),Drama|Romance|War,0.748321533203125
+gmf,6,0,1,312,313,Titanic (1997),Action|Drama|Romance,0.7388748526573181
+gmf,7,0,1,287,288,Scream (1996),Horror|Thriller,0.6971981525421143
+gmf,8,0,1,299,300,Air Force One (1997),Action|Thriller,0.6677693724632263
+gmf,9,0,1,293,294,Liar Liar (1997),Comedy,0.641950786113739
+gmf,10,0,1,426,427,To Kill a Mockingbird (1962),Drama,0.6404330730438232
+gmf,1,1,2,173,174,Raiders of the Lost Ark (1981),Action|Adventure,0.748904824256897
+gmf,2,1,2,180,181,Return of the Jedi (1983),Action|Adventure|Romance|Sci-Fi|War,0.7279213666915894
+gmf,3,1,2,171,172,"Empire Strikes Back, The (1980)",Action|Adventure|Drama|Romance|Sci-Fi|War,0.7249658107757568
+gmf,4,1,2,97,98,"Silence of the Lambs, The (1991)",Drama|Thriller,0.7231574058532715
+gmf,5,1,2,78,79,"Fugitive, The (1993)",Action|Thriller,0.6842806339263916
+gmf,6,1,2,55,56,Pulp Fiction (1994),Crime|Drama,0.6797518730163574
+gmf,7,1,2,209,210,Indiana Jones and the Last Crusade (1989),Action|Adventure,0.667739748954773
+gmf,8,1,2,203,204,Back to the Future (1985),Comedy|Sci-Fi,0.65367192029953
+gmf,9,1,2,167,168,Monty Python and the Holy Grail (1974),Comedy,0.647457480430603
+gmf,10,1,2,63,64,"Shawshank Redemption, The (1994)",Drama,0.6315270662307739
+gmf,1,2,3,49,50,Star Wars (1977),Action|Adventure|Romance|Sci-Fi|War,0.40256527066230774
+gmf,2,2,3,99,100,Fargo (1996),Crime|Drama|Thriller,0.3833294212818146
+gmf,3,2,3,173,174,Raiders of the Lost Ark (1981),Action|Adventure,0.3693392872810364
+gmf,4,2,3,171,172,"Empire Strikes Back, The (1980)",Action|Adventure|Drama|Romance|Sci-Fi|War,0.35577383637428284
+gmf,5,2,3,97,98,"Silence of the Lambs, The (1991)",Drama|Thriller,0.35520464181900024
+gmf,6,2,3,126,127,"Godfather, The (1972)",Action|Crime|Drama,0.33692365884780884
+gmf,7,2,3,78,79,"Fugitive, The (1993)",Action|Thriller,0.33044397830963135
+gmf,8,2,3,55,56,Pulp Fiction (1994),Crime|Drama,0.32946866750717163
+gmf,9,2,3,0,1,Toy Story (1995),Animation|Children's|Comedy,0.3283085823059082
+gmf,10,2,3,209,210,Indiana Jones and the Last Crusade (1989),Action|Adventure,0.3221067190170288
+mlp,1,0,1,317,318,Schindler's List (1993),Drama|War,3.1301162242889404
+mlp,2,0,1,567,568,Speed (1994),Action|Romance|Thriller,2.4555771350860596
+mlp,3,0,1,654,655,Stand by Me (1986),Adventure|Comedy|Drama,2.3235185146331787
+mlp,4,0,1,422,423,E.T. the Extra-Terrestrial (1982),Children's|Drama|Fantasy|Sci-Fi,2.2514328956604004
+mlp,5,0,1,474,475,Trainspotting (1996),Drama,1.905080795288086
+mlp,6,0,1,285,286,"English Patient, The (1996)",Drama|Romance|War,1.889798641204834
+mlp,7,0,1,404,405,Mission: Impossible (1996),Action|Adventure|Mystery,1.8643110990524292
+mlp,8,0,1,356,357,One Flew Over the Cuckoo's Nest (1975),Drama,1.779006838798523
+mlp,9,0,1,426,427,To Kill a Mockingbird (1962),Drama,1.7301387786865234
+mlp,10,0,1,650,651,Glory (1989),Action|Drama|War,1.7142727375030518
+mlp,1,1,2,474,475,Trainspotting (1996),Drama,4.293121337890625
+mlp,2,1,2,6,7,Twelve Monkeys (1995),Drama|Sci-Fi,4.158345699310303
+mlp,3,1,2,247,248,Grosse Pointe Blank (1997),Comedy|Crime,3.945117712020874
+mlp,4,1,2,267,268,Chasing Amy (1997),Drama|Romance,3.877629280090332
+mlp,5,1,2,507,508,"People vs. Larry Flynt, The (1996)",Drama,3.65763258934021
+mlp,6,1,2,123,124,Lone Star (1996),Drama|Mystery,3.390031099319458
+mlp,7,1,2,8,9,Dead Man Walking (1995),Drama,3.2675318717956543
+mlp,8,1,2,245,246,Chasing Amy (1997),Drama|Romance,3.215344190597534
+mlp,9,1,2,339,340,Boogie Nights (1997),Drama,3.099513053894043
+mlp,10,1,2,128,129,Bound (1996),Crime|Drama|Romance|Thriller,3.0918331146240234
+mlp,1,2,3,312,313,Titanic (1997),Action|Drama|Romance,5.386428356170654
+mlp,2,2,3,747,748,"Saint, The (1997)",Action|Romance|Thriller,4.283811092376709
+mlp,3,2,3,285,286,"English Patient, The (1996)",Drama|Romance|War,4.100327968597412
+mlp,4,2,3,878,879,"Peacemaker, The (1997)",Action|Thriller|War,3.7697670459747314
+mlp,5,2,3,309,310,"Rainmaker, The (1997)",Drama,3.728940725326538
+mlp,6,2,3,268,269,"Full Monty, The (1997)",Comedy,3.5902292728424072
+mlp,7,2,3,269,270,Gattaca (1997),Drama|Sci-Fi|Thriller,3.2218799591064453
+mlp,8,2,3,291,292,Rosewood (1997),Drama,3.1527199745178223
+mlp,9,2,3,750,751,Tomorrow Never Dies (1997),Action|Romance|Thriller,3.072143077850342
+mlp,10,2,3,303,304,Fly Away Home (1996),Adventure|Children's,3.054165840148926
+neumf,1,0,1,474,475,Trainspotting (1996),Drama,3.399066209793091
+neumf,2,0,1,432,433,Heathers (1989),Comedy,2.395637035369873
+neumf,3,0,1,507,508,"People vs. Larry Flynt, The (1996)",Drama,2.136723041534424
+neumf,4,0,1,654,655,Stand by Me (1986),Adventure|Comedy|Drama,1.9943146705627441
+neumf,5,0,1,275,276,Leaving Las Vegas (1995),Drama|Romance,1.9369635581970215
+neumf,6,0,1,422,423,E.T. the Extra-Terrestrial (1982),Children's|Drama|Fantasy|Sci-Fi,1.7469499111175537
+neumf,7,0,1,317,318,Schindler's List (1993),Drama|War,1.6310402154922485
+neumf,8,0,1,287,288,Scream (1996),Horror|Thriller,1.6272776126861572
+neumf,9,0,1,272,273,Heat (1995),Action|Crime|Thriller,1.5532444715499878
+neumf,10,0,1,473,474,Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1963),Sci-Fi|War,1.5373910665512085
+neumf,1,1,2,332,333,"Game, The (1997)",Mystery|Thriller,3.699402332305908
+neumf,2,1,2,267,268,Chasing Amy (1997),Drama|Romance,3.1118526458740234
+neumf,3,1,2,327,328,Conspiracy Theory (1997),Action|Mystery|Romance|Thriller,2.9543609619140625
+neumf,4,1,2,123,124,Lone Star (1996),Drama|Mystery,2.940565586090088
+neumf,5,1,2,339,340,Boogie Nights (1997),Drama,2.802460193634033
+neumf,6,1,2,507,508,"People vs. Larry Flynt, The (1996)",Drama,2.7608115673065186
+neumf,7,1,2,474,475,Trainspotting (1996),Drama,2.6632821559906006
+neumf,8,1,2,6,7,Twelve Monkeys (1995),Drama|Sci-Fi,2.45231032371521
+neumf,9,1,2,8,9,Dead Man Walking (1995),Drama,2.447813034057617
+neumf,10,1,2,743,744,Michael Collins (1996),Drama|War,2.3940787315368652
+neumf,1,2,3,285,286,"English Patient, The (1996)",Drama|Romance|War,3.5644192695617676
+neumf,2,2,3,312,313,Titanic (1997),Action|Drama|Romance,3.4442505836486816
+neumf,3,2,3,689,690,Seven Years in Tibet (1997),Drama|War,2.929276466369629
+neumf,4,2,3,268,269,"Full Monty, The (1997)",Comedy,2.9048614501953125
+neumf,5,2,3,747,748,"Saint, The (1997)",Action|Romance|Thriller,2.703310251235962
+neumf,6,2,3,304,305,"Ice Storm, The (1997)",Drama,2.6948609352111816
+neumf,7,2,3,300,301,In & Out (1997),Comedy,2.6752054691314697
+neumf,8,2,3,309,310,"Rainmaker, The (1997)",Drama,2.5535826683044434
+neumf,9,2,3,677,678,Volcano (1997),Drama|Thriller,2.466376781463623
+neumf,10,2,3,314,315,Apt Pupil (1998),Drama|Thriller,2.439371109008789
