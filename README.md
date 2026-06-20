@@ -1,6 +1,6 @@
 # 💪 Gains Don't Stop
 
-> A repository to record my **daily growth** in algorithms, AI, and software projects.
+> A repository to record my **daily growth** in algorithms, AI, and projects.
 
 ---
 
