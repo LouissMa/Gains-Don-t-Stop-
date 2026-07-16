@@ -48,29 +48,21 @@
 
 可以从这些入口快速查看代码：
 
-- [全部算法训练](./Algorithms/)
+- [算法训练索引](./Algorithms/README.md)
 - [基础算法模板](./Algorithms/Basic-Algorithms/)
 - [2025 训练记录](./Algorithms/2025/)
 - [2026 训练记录](./Algorithms/2026/)
 - [线段树训练](./Algorithms/2026/04-19/)
 - [图论专题](./Algorithms/2026/02-10/)
 
-## AI & Machine Learning
+## Other Learning Records
 
-算法之外，我也在系统学习机器学习、深度学习与大模型技术，并通过代码复现和项目实验理解模型背后的原理。
-
-| Directory | Focus |
-| --- | --- |
-| [`Machine-Learning/`](./Machine-Learning/) | CS229、回归与分类、CNN、强化学习、推荐系统及 PyTorch/Jupyter 实验 |
-| [`AI-Projects/minimind/`](./AI-Projects/minimind/) | 小型语言模型学习：Transformer/MoE、Pretrain、SFT、LoRA、DPO 与蒸馏 |
-| [`AI-Projects/MiroFish/`](./AI-Projects/MiroFish/) | 多智能体模拟与 AI 应用工程的学习和实验 |
-| [`AILab/JAX-GPT/`](./AILab/JAX-GPT/) | JAX 与 GPT 相关论文阅读、Notebook 实验 |
-| [`Stanford-CS221/`](./Stanford-CS221/) | Stanford CS221 人工智能课程作业 |
-
-## Projects & Learning Notes
+完整的 AI 与软件项目将分别维护在独立仓库中。本仓库以算法训练为主，只保留部分课程实验和学习记录。
 
 | Directory | Description |
 | --- | --- |
+| [`Machine-Learning/`](./Machine-Learning/) | 机器学习课程笔记与实验 |
+| [`Stanford-CS221/`](./Stanford-CS221/) | Stanford CS221 人工智能课程作业 |
 | [`Projects/`](./Projects/) | Java Web、课程设计与软件开发实践项目 |
 | [`Daily-Logs/`](./Daily-Logs/) | 阶段总结、语言学习与日常成长记录 |
 | [`improvement/`](./improvement/) | 编译原理、Java 等专题学习 |
@@ -80,12 +72,9 @@
 
 - 持续参加 Codeforces 与 AtCoder 比赛，提升思维速度、正确率和代码稳定性
 - 系统整理数据结构、图论、动态规划与数学算法模板
-- 深入学习 LLM 训练流程、强化学习与 AI Agent 工程
+- 将成熟的 AI 与软件项目整理为独立、可复现的仓库
 - 将学习过程沉淀为可复用、可检索、可验证的代码与笔记
 
----
-
-部分 AI 子目录用于学习和实验，可能包含第三方开源项目；原项目版权与许可证以对应子目录中的说明为准。
 
 <div align="center">
 
